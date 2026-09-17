@@ -64,6 +64,36 @@ app.post('/products', (req, res) => {
   res.status(201).json(newProduct);
 });
 
+// PUT /products/:id -> actualizar un producto existente
+app.put('/products/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const product = products.find(p => p.id === id);
+
+  if (!product) {
+    return res.status(404).json({ error: `Producto con id ${id} no encontrado` });
+  }
+
+  const { nombre, precio, stock } = req.body;
+  if (nombre !== undefined) product.nombre = nombre;
+  if (precio !== undefined) product.precio = precio;
+  if (stock !== undefined) product.stock = stock;
+
+  res.json(product);
+});
+
+// DELETE /products/:id -> eliminar un producto
+app.delete('/products/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const index = products.findIndex(p => p.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({ error: `Producto con id ${id} no encontrado` });
+  }
+
+  const deleted = products.splice(index, 1)[0];
+  res.json({ mensaje: 'Producto eliminado', producto: deleted });
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
 });

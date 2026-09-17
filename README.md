@@ -94,6 +94,9 @@ npm start
 
 > Reemplaza esta sección con tus propias capturas de pantalla antes de entregar:
 
-- [ ] Captura de `docker ps` mostrando el contenedor `productos-api` en ejecución.
+- [x] Captura de `docker ps` mostrando el contenedor `productos-api` en ejecución.
+
+![docker ps](Evidencias/docker-ps.png)
+
 - [ ] Captura de los 5 endpoints respondiendo correctamente (curl o Postman).
 - [ ] Captura de `docker logs productos-api`.

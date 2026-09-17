@@ -1,0 +1,16 @@
+{
+  "name": "tienda-productos-api",
+  "version": "1.0.0",
+  "description": "API REST de productos para tienda virtual - Proyecto 1 Docker",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["docker", "express", "api-rest"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

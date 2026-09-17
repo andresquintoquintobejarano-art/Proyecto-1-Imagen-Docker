@@ -43,6 +43,27 @@ app.get('/products/:id', (req, res) => {
   res.json(product);
 });
 
+// POST /products -> crear un nuevo producto
+app.post('/products', (req, res) => {
+  const { nombre, precio, stock } = req.body;
+
+  if (!nombre || precio === undefined || stock === undefined) {
+    return res.status(400).json({
+      error: 'Los campos nombre, precio y stock son obligatorios'
+    });
+  }
+
+  const newProduct = {
+    id: nextId++,
+    nombre,
+    precio,
+    stock
+  };
+
+  products.push(newProduct);
+  res.status(201).json(newProduct);
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
 });

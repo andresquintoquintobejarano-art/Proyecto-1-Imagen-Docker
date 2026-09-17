@@ -26,6 +26,23 @@ app.get('/', (req, res) => {
   });
 });
 
+// GET /products -> listar todos los productos
+app.get('/products', (req, res) => {
+  res.json(products);
+});
+
+// GET /products/:id -> obtener un producto por id
+app.get('/products/:id', (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const product = products.find(p => p.id === id);
+
+  if (!product) {
+    return res.status(404).json({ error: `Producto con id ${id} no encontrado` });
+  }
+
+  res.json(product);
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
